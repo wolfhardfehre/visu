@@ -1,4 +1,4 @@
-package com.nicefontaine;
+package com.nicefontaine.projections;
 
 public interface Projection {
 

@@ -19,7 +19,6 @@ public class Main {
         frame.setSize(600, 600);
         frame.setVisible(true);
 
-        //start your sketch
         ps.startThread();
     }
 }

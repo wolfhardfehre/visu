@@ -1,30 +1,28 @@
 package com.nicefontaine;
 
-import processing.awt.PSurfaceAWT;
+import com.nicefontaine.projections.SquareToCircleAreaProjection;
+import com.nicefontaine.projections.Projection;
 import processing.core.PApplet;
 import processing.core.PSurface;
-
-import javax.swing.*;
 
 public class SquareRunner extends PApplet {
 
     private Projection projection;
-    float radius = 400;
-    float u = TWO_PI * radius;
+    private float radius = 300;
+    private int width = 600;
 
     public void settings() {
-        size((int) u, (int) u);
+        size(width, width);
     }
 
     public void setup() {
-        //projection = new CylindricalProjection(80F, u, radius);
+        projection = new SquareToCircleAreaProjection(radius, width, 100); // new NoProjection();
     }
 
     public void draw() {
         background(0);
         //ellipse(mouseX, mouseY, 70, 60);
-        translate(width/2, height/2);
-        square(mouseX, mouseY, 200, 2);
+        square(mouseX, mouseY, 5, 5);
         //polygon(mouseX, mouseY, 80, 20);
     }
 
@@ -53,25 +51,21 @@ public class SquareRunner extends PApplet {
             float[] res = projection.project(sx, sy);
             vertex(res[0], res[1]);
         }
-        println(sx, sy);
         for (float a = step; a < width; a += step) {
             sy += a;
             float[] res = projection.project(sx, sy);
             vertex(res[0], res[1]);
         }
-        println(sx, sy);
         for (float a = step; a < width; a += step) {
             sx -= a;
             float[] res = projection.project(sx, sy);
             vertex(res[0], res[1]);
         }
-        println(sx, sy);
         for (float a = step; a < width; a += step) {
             sy -= a;
             float[] res = projection.project(sx, sy);
             vertex(res[0], res[1]);
         }
-        println(sx, sy);
         endShape(CLOSE);
     }
 }
