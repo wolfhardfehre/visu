@@ -1,3 +1,5 @@
 *.jar
 .idea
 build/
+/.gradle/
+/gradle/
