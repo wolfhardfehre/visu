@@ -10,13 +10,13 @@ public class Square implements Shape {
     private final PApplet applet;
     private final Projection projection;
     private final float step;
-    private final float width;
+    private final float leg;
 
-    public Square(PApplet applet, Projection projection, float w, int n) {
+    public Square(PApplet applet, Projection projection, float leg, int npoints) {
         this.applet = applet;
         this.projection = projection;
-        this.step = w / n;
-        this.width = w;
+        this.step = leg / npoints;
+        this.leg = leg;
     }
 
     @Override
@@ -24,22 +24,22 @@ public class Square implements Shape {
         applet.beginShape();
         float sx = x;
         float sy = y;
-        for (float a = step; a < width; a += step) {
+        for (float a = step; a < leg; a += step) {
             sx += a;
             float[] res = projection.project(sx, sy);
             applet.vertex(res[0], res[1]);
         }
-        for (float a = step; a < width; a += step) {
+        for (float a = step; a < leg; a += step) {
             sy += a;
             float[] res = projection.project(sx, sy);
             applet.vertex(res[0], res[1]);
         }
-        for (float a = step; a < width; a += step) {
+        for (float a = step; a < leg; a += step) {
             sx -= a;
             float[] res = projection.project(sx, sy);
             applet.vertex(res[0], res[1]);
         }
-        for (float a = step; a < width; a += step) {
+        for (float a = step; a < leg; a += step) {
             sy -= a;
             float[] res = projection.project(sx, sy);
             applet.vertex(res[0], res[1]);

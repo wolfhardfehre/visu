@@ -1,18 +1,18 @@
 package com.nicefontaine;
 
 import com.nicefontaine.projections.Projection;
-import com.nicefontaine.projections.SquareToCylinderProjection;
+import com.nicefontaine.projections.PlaneToCylinderProjection;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class Square2CylinderProjectionTest {
+public class PlaneToCylinderProjectionTest {
 
     private static final float PRECISION = 1e-6f;
 
     @Test
     public void projectSquareToCylinder22_withRadius2() {
         // given
-        Projection projection = new SquareToCylinderProjection(2F, 8F);
+        Projection projection = new PlaneToCylinderProjection(2F, 8F);
 
         // when
         float[] result = projection.project(2, 2);
@@ -25,7 +25,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder44_withRadius2() {
         // given
-        Projection projection = new SquareToCylinderProjection(2F, 8F);
+        Projection projection = new PlaneToCylinderProjection(2F, 8F);
 
         // when
         float[] result = projection.project(4, 4);
@@ -38,7 +38,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder66_withRadius2() {
         // given
-        Projection projection = new SquareToCylinderProjection(2F, 8F);
+        Projection projection = new PlaneToCylinderProjection(2F, 8F);
 
         // when
         float[] result = projection.project(6, 6);
@@ -51,7 +51,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder88_withRadius2() {
         // given
-        Projection projection = new SquareToCylinderProjection(2F, 8F);
+        Projection projection = new PlaneToCylinderProjection(2F, 8F);
 
         // when
         float[] result = projection.project(8, 8);
@@ -64,7 +64,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder22_withRadius4() {
         // given
-        Projection projection = new SquareToCylinderProjection(4F, 8F);
+        Projection projection = new PlaneToCylinderProjection(4F, 8F);
 
         // when
         float[] result = projection.project(2, 2);
@@ -77,7 +77,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder44_withRadius4() {
         // given
-        Projection projection = new SquareToCylinderProjection(4F, 8F);
+        Projection projection = new PlaneToCylinderProjection(4F, 8F);
 
         // when
         float[] result = projection.project(4, 4);
@@ -90,7 +90,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder66_withRadius4() {
         // given
-        Projection projection = new SquareToCylinderProjection(4F, 8F);
+        Projection projection = new PlaneToCylinderProjection(4F, 8F);
 
         // when
         float[] result = projection.project(6, 6);
@@ -103,7 +103,7 @@ public class Square2CylinderProjectionTest {
     @Test
     public void projectSquareToCylinder88_withRadius4() {
         // given
-        Projection projection = new SquareToCylinderProjection(4F, 8F);
+        Projection projection = new PlaneToCylinderProjection(4F, 8F);
 
         // when
         float[] result = projection.project(8, 8);

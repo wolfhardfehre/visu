@@ -2,12 +2,12 @@ package com.nicefontaine.projections;
 
 import processing.core.PApplet;
 
-public class SquareToCylinderProjection implements Projection {
+public class PlaneToCylinderProjection implements Projection {
 
     private final float radius;
     private final float width;
 
-    public SquareToCylinderProjection(float radius, float width) {
+    public PlaneToCylinderProjection(float radius, float width) {
         this.radius = radius;
         this.width = width;
     }

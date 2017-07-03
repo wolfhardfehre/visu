@@ -1,28 +1,35 @@
 package com.nicefontaine;
 
-import com.nicefontaine.projections.SquareToCircleAreaProjection;
+import com.nicefontaine.projections.CylinderProjection;
 import com.nicefontaine.projections.Projection;
+import com.nicefontaine.shapes.Circle;
+import com.nicefontaine.shapes.Shape;
 import processing.core.PApplet;
 import processing.core.PSurface;
 
 public class SquareRunner extends PApplet {
 
     private Projection projection;
-    private float radius = 300;
+    private float radius = 100;
     private int width = 600;
+    private Shape shape;
 
     public void settings() {
         size(width, width);
     }
 
     public void setup() {
-        projection = new SquareToCircleAreaProjection(radius, width, 100);
+        projection = new CylinderProjection(radius, width, 100);
+        //shape = new Square(this, projection, 5, 5);
+        shape = new Circle(this, projection, 20, 100);
     }
 
     public void draw() {
         background(0);
+        shape.draw(mouseX, mouseY);
+
         //ellipse(mouseX, mouseY, 70, 60);
-        square(mouseX, mouseY, 5, 5);
+        //square(mouseX, mouseY, 5, 5);
         //polygon(mouseX, mouseY, 80, 20);
     }
 
@@ -37,34 +44,6 @@ public class SquareRunner extends PApplet {
             float sx = x + cos(a) * radius;
             float sy = y + sin(a) * radius;
             vertex(sx, sy);
-        }
-        endShape(CLOSE);
-    }
-
-    private void square(float x, float y, float width, int pointsPerSide) {
-        float step = width / pointsPerSide;
-        beginShape();
-        float sx = x;
-        float sy = y;
-        for (float a = step; a < width; a += step) {
-            sx += a;
-            float[] res = projection.project(sx, sy);
-            vertex(res[0], res[1]);
-        }
-        for (float a = step; a < width; a += step) {
-            sy += a;
-            float[] res = projection.project(sx, sy);
-            vertex(res[0], res[1]);
-        }
-        for (float a = step; a < width; a += step) {
-            sx -= a;
-            float[] res = projection.project(sx, sy);
-            vertex(res[0], res[1]);
-        }
-        for (float a = step; a < width; a += step) {
-            sy -= a;
-            float[] res = projection.project(sx, sy);
-            vertex(res[0], res[1]);
         }
         endShape(CLOSE);
     }
