@@ -2,16 +2,16 @@ package com.nicefontaine.projections;
 
 import processing.core.PVector;
 
-public class SquareToCircleAreaProjection implements Projection {
+public class CylinderProjection implements Projection {
 
     private final float distance;
     private final float halfWidth;
     private final Projection projection;
 
-    public SquareToCircleAreaProjection(float radius, float width, float distance) {
+    public CylinderProjection(float radius, float width, float distance) {
         this.distance = distance;
         this.halfWidth = width / 2;
-        this.projection = new SquareToCylinderProjection(radius, width);
+        this.projection = new PlaneToCylinderProjection(radius, width);
     }
 
     @Override
