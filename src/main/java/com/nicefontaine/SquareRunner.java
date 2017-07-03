@@ -16,7 +16,7 @@ public class SquareRunner extends PApplet {
     }
 
     public void setup() {
-        projection = new SquareToCircleAreaProjection(radius, width, 100); // new NoProjection();
+        projection = new SquareToCircleAreaProjection(radius, width, 100);
     }
 
     public void draw() {
