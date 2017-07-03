@@ -8,17 +8,17 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String... args) {
-        SquareRunner pt = new SquareRunner();
-        PSurface ps = pt.getSurface();
-        ps.setSize(600, 600);
-        PSurfaceAWT.SmoothCanvas smoothCanvas = (PSurfaceAWT.SmoothCanvas) ps.getNative();
+        Processor processor = new Processor();
+        PSurface surface = processor.getSurface();
+        surface.setSize(600, 600);
+        PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surface.getNative();
 
-        JFrame frame = new JFrame("JFrame Test");
+        JFrame frame = new JFrame("Animation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(smoothCanvas);
+        frame.add(canvas);
         frame.setSize(600, 600);
         frame.setVisible(true);
 
-        ps.startThread();
+        surface.startThread();
     }
 }

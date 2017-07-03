@@ -7,7 +7,7 @@ import com.nicefontaine.shapes.Shape;
 import processing.core.PApplet;
 import processing.core.PSurface;
 
-public class SquareRunner extends PApplet {
+public class Processor extends PApplet {
 
     private Projection projection;
     private float radius = 100;
@@ -27,24 +27,9 @@ public class SquareRunner extends PApplet {
     public void draw() {
         background(0);
         shape.draw(mouseX, mouseY);
-
-        //ellipse(mouseX, mouseY, 70, 60);
-        //square(mouseX, mouseY, 5, 5);
-        //polygon(mouseX, mouseY, 80, 20);
     }
 
     public PSurface getSurface() {
         return initSurface();
-    }
-
-    void polygon(float x, float y, float radius, int npoints) {
-        float angle = TWO_PI / npoints;
-        beginShape();
-        for (float a = 0; a < TWO_PI; a += angle) {
-            float sx = x + cos(a) * radius;
-            float sy = y + sin(a) * radius;
-            vertex(sx, sy);
-        }
-        endShape(CLOSE);
     }
 }
