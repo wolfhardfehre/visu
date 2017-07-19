@@ -1,6 +1,6 @@
 package com.nicefontaine;
 
-import com.nicefontaine.projections.CylinderProjection;
+import com.nicefontaine.models.CoordinateModel;
 import com.nicefontaine.projections.Projection;
 import com.nicefontaine.shapes.Circle;
 import com.nicefontaine.shapes.Shape;
@@ -9,24 +9,27 @@ import processing.core.PSurface;
 
 public class Processor extends PApplet {
 
-    private Projection projection;
-    private float radius = 100;
-    private int width = 600;
-    private Shape shape;
+    private final Shape shape;
+    private final CoordinateModel model;
+    private final boolean isUpdater;
 
-    public void settings() {
-        size(width, width);
+    Processor(final Projection projection, CoordinateModel model, boolean isUpdater) {
+        this.shape = new Circle(this, projection, 20, 100);
+        this.model = model;
+        this.isUpdater = isUpdater;
     }
 
-    public void setup() {
-        projection = new CylinderProjection(radius, width, 100);
-        //shape = new Square(this, projection, 5, 5);
-        shape = new Circle(this, projection, 20, 100);
+    public void settings() {
+        size(600, 600);
     }
 
     public void draw() {
         background(0);
-        shape.draw(mouseX, mouseY);
+        if (isUpdater) {
+            model.set(new int[] {mouseX, mouseY});
+        }
+        int[] values = model.get();
+        shape.draw(values[0], values[1]);
     }
 
     public PSurface getSurface() {
