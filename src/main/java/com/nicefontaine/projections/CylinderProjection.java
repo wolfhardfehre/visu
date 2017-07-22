@@ -16,6 +16,7 @@ public class CylinderProjection implements Projection {
 
     @Override
     public float[] project(float x, float y) {
+        y = -y;
         float sigma = distance / (distance - y);
         PVector support = new PVector(halfWidth, halfWidth, distance);
         float[] result = projection.project(x, y);
